@@ -7,7 +7,7 @@ import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import {routing} from "./routes/_.js";
 import {update} from "./netTools/middleware.js";
-
+/* global console, process */
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 const packageJSON = require("./package.json");
@@ -62,4 +62,4 @@ configureExpress()
     }).catch((err) => {
     console.error(err);
     process.exit(1);
-})
+});

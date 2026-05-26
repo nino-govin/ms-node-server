@@ -2,6 +2,7 @@
  * Created at 10/06/2018
  * By Adrien
  */
+/* global console */
 
 export {
     open_stream,
@@ -54,7 +55,7 @@ export {
             }
         };
         return stream;
-    };
+    }
 
     /**
      * Response with status 200: Ok
@@ -74,7 +75,7 @@ export {
             obj: obj || {},
             err: null
         });
-    };
+    }
 
     /**
      * Response with status 400: Bad request
@@ -94,7 +95,7 @@ export {
             obj: null,
             err: err || new Error()
         });
-    };
+    }
 
     /**
      * Response with status 403: Authentication errors
@@ -114,7 +115,7 @@ export {
             obj: null,
             err: err || new Error(msg ? 'Authentication errors: ' + msg : 'Authentication errors.')
         });
-    };
+    }
 
     /**
      * Response with status 403: Forbidden
@@ -134,7 +135,7 @@ export {
             obj: null,
             err: err || new Error()
         });
-    };
+    }
 
     /**
      * Response with status 404: Not found
@@ -154,7 +155,7 @@ export {
             obj: null,
             err: err || new Error()
         });
-    };
+    }
 
     /**
      * Response with status 404: Too Many Requests
@@ -174,7 +175,7 @@ export {
             obj: null,
             err: err || new Error(msg ? 'Too Many Requests: ' + msg : 'Too Many Requests.')
         });
-    };
+    }
 
     /**
      * Response with status 500: Internal error
@@ -194,4 +195,4 @@ export {
             obj: null,
             err: err || new Error()
         });
-    };
+    }

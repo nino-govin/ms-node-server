@@ -2,6 +2,7 @@
  * Created at 18/09/2018
  * By Adrien
  */
+/* global console */
 
 import * as RT from './responseTools.js';
 
