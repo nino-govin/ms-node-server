@@ -13,6 +13,9 @@ jobs:
           cache-path: ~/project/node_modules
           override-ci-command: npm install
       - run:
+          name: Run JSHint
+          command: npx jshint src/
+      - run:
           name: Run tests
           command: npm test --passWithNoTests
   deploy:

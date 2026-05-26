@@ -9,15 +9,16 @@
     "test": "mocha **.spec.js"
   },
   "devDependencies": {
-    "mocha": "4.0.1",
-    "chai": "4.1.2"
+    "chai": "4.1.2",
+    "jshint": "^2.13.6",
+    "mocha": "4.0.1"
   },
   "dependencies": {
-    "lodash": "^4.17.15",
-    "express": "^4.13.3",
     "body-parser": "^1.15.2",
     "cookie-parser": "^1.4.3",
+    "express": "^4.13.3",
     "express-session": "^1.14.2",
+    "lodash": "^4.17.15",
     "pug": "^2.0.3"
   },
   "repository": {
