@@ -4,6 +4,7 @@ import http from 'http';
 import path from 'path';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
+import client from 'prom-client';
 import {routing} from "./routes/_.js";
 import {update} from "./netTools/middleware.js";
 /* global console, process */
@@ -11,6 +12,8 @@ import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 const packageJSON = require("./package.json");
 const rootDir = 'dist';
+
+client.collectDefaultMetrics();
 
 const app = express();
 const jsonParser = bodyParser.json({
@@ -30,6 +33,11 @@ const configureExpress = function () { return new Promise((resolve, reject) => {
 }); };
 
 const configureRouting = function () { return new Promise((resolve, reject) => {
+
+    app.get('/metrics', async (req, res) => {
+        res.set('Content-Type', client.register.contentType);
+        res.end(await client.register.metrics());
+    });
 
     app.get('/*', update);
     app.delete('/*', update);
