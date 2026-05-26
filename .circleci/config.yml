@@ -4,6 +4,16 @@ version: 2.1
 orbs:
   node: circleci/node@5
 jobs:
+  lint:
+      executor: node/default
+      steps:
+        - checkout
+        - node/install-packages:
+            cache-path: ~/project/node_modules
+            override-ci-command: npm install
+        - run:
+            name: Run JSHint
+            command: npx jshint .
   test-node:
     # Install node dependencies and run tests
     executor: node/default
@@ -12,9 +22,6 @@ jobs:
       - node/install-packages:
           cache-path: ~/project/node_modules
           override-ci-command: npm install
-      - run:
-          name: Run JSHint
-          command: npx jshint .
       - run:
           name: Run tests
           command: npm test --passWithNoTests
@@ -30,7 +37,7 @@ jobs:
 workflows:
   build-and-test:
     jobs:
-      - test-node
-    # - deploy:
-    #     requires:
-    #       - test-node
+      - lint
+      - test-node:
+          requires:
+            - lint
