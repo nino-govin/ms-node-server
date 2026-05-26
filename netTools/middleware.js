@@ -3,6 +3,7 @@
  * By Adrien
  */
 /* global console */
+/* jshint -W069 */
 
 import * as RT from './responseTools.js';
 

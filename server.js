@@ -1,5 +1,6 @@
 'use strict';
 
+/* jshint esversion: 11 */
 import express from 'express';
 import http from 'http';
 import path from 'path';

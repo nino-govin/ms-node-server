@@ -1,3 +1,5 @@
+/* jshint esversion: 11 */
+/* global console */
 import fs from 'fs';
 
 export { routing };
