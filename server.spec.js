@@ -55,33 +55,33 @@ describe('server.js', function() {
 
     describe('package.json', function() {
         it('should have type: module for ES6', async function() {
-            const pkg = await import('./package.json', { assert: { type: 'json' } });
+            const pkg = await import('./package.json', { with: { type: 'json' } });
             expect(pkg.default.type).to.equal('module');
         });
 
         it('should have express in dependencies', async function() {
-            const pkg = await import('./package.json', { assert: { type: 'json' } });
+            const pkg = await import('./package.json', { with: { type: 'json' } });
             expect(pkg.default.dependencies).to.have.property('express');
         });
 
         it('should have mocha in devDependencies', async function() {
-            const pkg = await import('./package.json', { assert: { type: 'json' } });
+            const pkg = await import('./package.json', { with: { type: 'json' } });
             expect(pkg.default.devDependencies).to.have.property('mocha');
         });
 
         it('should have chai in devDependencies', async function() {
-            const pkg = await import('./package.json', { assert: { type: 'json' } });
+            const pkg = await import('./package.json', { with: { type: 'json' } });
             expect(pkg.default.devDependencies).to.have.property('chai');
         });
 
         it('should have test script defined', async function() {
-            const pkg = await import('./package.json', { assert: { type: 'json' } });
+            const pkg = await import('./package.json', { with: { type: 'json' } });
             expect(pkg.default.scripts).to.have.property('test');
             expect(pkg.default.scripts.test).to.equal('mocha **.spec.js');
         });
 
         it('should have start script defined', async function() {
-            const pkg = await import('./package.json', { assert: { type: 'json' } });
+            const pkg = await import('./package.json', { with: { type: 'json' } });
             expect(pkg.default.scripts).to.have.property('start');
             expect(pkg.default.scripts.start).to.equal('node server.js');
         });
@@ -91,7 +91,7 @@ describe('server.js', function() {
         it('should create express app instance', async function() {
             const express = await import('express');
             const app = express.default();
-            expect(app).to.be.an('object');
+            expect(typeof app).to.equal('function');
             expect(app.get).to.be.a('function');
             expect(app.post).to.be.a('function');
             expect(app.delete).to.be.a('function');
@@ -217,7 +217,7 @@ describe('server.js', function() {
     describe('pug template engine', function() {
         it('should be available for template rendering', async function() {
             const pug = await import('pug');
-            expect(pug.default).to.be.a('function');
+            expect(pug.compile).to.be.a('function');
         });
     });
 
