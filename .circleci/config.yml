@@ -14,7 +14,7 @@ jobs:
           override-ci-command: npm install
       - run:
           name: Run JSHint
-          command: npx jshint src/
+          command: npx jshint .
       - run:
           name: Run tests
           command: npm test --passWithNoTests
